@@ -19,7 +19,8 @@ var commentRoutes       = require("./routes/comments");
 var indexRoutes         = require("./routes/index");
 
 //seedDB(); //Seeding the DB with data
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://csdormanDbUser:RhBYcPKBYYRCEoQn@cluster0-kai0v.mongodb.net/test?retryWrites=true", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
