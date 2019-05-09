@@ -18,10 +18,13 @@ var campgroundRoutes    = require("./routes/campgrounds");
 var commentRoutes       = require("./routes/comments");
 var indexRoutes         = require("./routes/index");
 
-console.log();
 //seedDB(); //Seeding the DB with data
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
-//mongoose.connect("mongodb+srv://csdormanDbUser:RhBYcPKBYYRCEoQn@cluster0-kai0v.mongodb.net/test?retryWrites=true", { useNewUrlParser: true });
+
+//backup URL if env variable isn't set
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
+//automatically switch between local and testing databases using env variable (or backup)
+mongoose.connect(url, { useNewUrlParser: true });
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
